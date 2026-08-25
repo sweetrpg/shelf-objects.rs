@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for considering a contribution to `shelf-objects.rs`.
+Thanks for considering a contribution to `game-room-objects.rs`.
 
 ## Branching
 

@@ -5,7 +5,7 @@ working in this repository.
 
 ## About This Project
 
-`shelf-objects.rs` defines the persistence models and API value objects for the Shelf
+`game-room-objects.rs` defines the persistence models and API value objects for the Game Room
 microservice's domain: library, wishlist, table, visibility. Pure data types - no business
 logic, no I/O.
 
