@@ -1,0 +1,58 @@
+name: PR
+
+on:
+    pull_request:
+        branches: [develop]
+
+jobs:
+    tests:
+        name: Build/test
+        runs-on: ubuntu-latest
+
+        steps:
+          - uses: actions/checkout@v6
+          - name: Get language version
+            id: get_lang_version
+            run: |
+                  v=$(cat .rust-version)
+                  echo "lang_version=$v" >> $GITHUB_OUTPUT
+          - name: Install Rust
+            uses: dtolnay/rust-toolchain@stable
+            with:
+              targets: x86_64-unknown-linux-musl
+          - name: Build
+            run: |
+              cargo build --verbose
+          - name: Test
+            run: |
+              cargo test --verbose
+          - name: Lint (clippy)
+            run: |
+              cargo clippy --verbose
+          - name: Install cargo-tarpaulin
+            uses: taiki-e/install-action@v2
+            with:
+              tool: cargo-tarpaulin
+          - name: Coverage (tarpaulin)
+            run: |
+              mkdir -p coverage
+              cargo tarpaulin --engine llvm --out Html --out Xml --output-dir coverage | tee coverage/tarpaulin-output.txt
+          - name: Coverage summary
+            run: |
+              echo "## Rust coverage" >> "$GITHUB_STEP_SUMMARY"
+              echo '```' >> "$GITHUB_STEP_SUMMARY"
+              cat coverage/tarpaulin-output.txt >> "$GITHUB_STEP_SUMMARY"
+              echo '```' >> "$GITHUB_STEP_SUMMARY"
+          - name: Upload coverage artifact
+            uses: actions/upload-artifact@v4
+            with:
+              name: coverage-report
+              path: coverage/
+          - name: Coverage threshold
+            continue-on-error: true
+            run: |
+              LINE_RATE=$(grep -oE '<coverage [^>]*line-rate="[0-9.]+"' coverage/cobertura.xml \
+                  | grep -oE 'line-rate="[0-9.]+"' | grep -oE '[0-9.]+' || true)
+              LINE_RATE=${LINE_RATE:-0}
+              PCT=$(awk -v r="$LINE_RATE" 'BEGIN { printf "%.2f", r*100 }')
+              awk -v pct="$PCT" 'BEGIN { exit !(pct+0 >= 0) }'

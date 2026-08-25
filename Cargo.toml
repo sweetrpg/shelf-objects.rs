@@ -1,0 +1,24 @@
+[package]
+name = "sweetrpg-shelf-objects"
+description = "Persistence models and API value objects for the Shelf microservice"
+version = "0.0.1"
+edition = "2021"
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/sweetrpg/shelf-objects.rs"
+homepage = "https://github.com/sweetrpg/shelf-objects"
+keywords = ["sweetrpg", "shelf", "models"]
+categories = ["data-structures"]
+authors = ["Paul Schifferer <paul@schifferers.net>"]
+exclude = [
+    "*.orig",
+    ".github/*",
+    ".gitignore",
+    ".rust-version",
+    ".editorconfig",
+    ".cargo_vcs_info.json",
+]
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
