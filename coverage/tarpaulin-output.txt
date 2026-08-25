@@ -1,0 +1,19 @@
+[2m2026-08-25T01:39:20.206158Z[0m [32m INFO[0m [2mcargo_tarpaulin::config[0m[2m:[0m Creating config
+[2m2026-08-25T01:39:20.260057Z[0m [32m INFO[0m [2mcargo_tarpaulin[0m[2m:[0m Running Tarpaulin
+[2m2026-08-25T01:39:20.260075Z[0m [32m INFO[0m [2mcargo_tarpaulin[0m[2m:[0m Building project
+[2m2026-08-25T01:39:20.275054Z[0m [32m INFO[0m [2mcargo_tarpaulin::cargo[0m[2m:[0m Cleaning project
+[2m2026-08-25T01:39:29.210740Z[0m [32m INFO[0m [2mcargo_tarpaulin::process_handling[0m[2m:[0m running /home/runner/work/shelf-objects.rs/shelf-objects.rs/target/debug/deps/sweetrpg_shelf_objects-9b367580bf301886
+[2m2026-08-25T01:39:29.210914Z[0m [32m INFO[0m [2mcargo_tarpaulin::process_handling[0m[2m:[0m Setting LLVM_PROFILE_FILE
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+[2m2026-08-25T01:39:29.212892Z[0m [32m INFO[0m [2mcargo_tarpaulin::statemachine::instrumented[0m[2m:[0m For binary: target/debug/deps/sweetrpg_shelf_objects-9b367580bf301886
+[2m2026-08-25T01:39:29.212903Z[0m [32m INFO[0m [2mcargo_tarpaulin::statemachine::instrumented[0m[2m:[0m Generated: target/tarpaulin/profraws/sweetrpg_shelf_objects-9b367580bf301886_18405209413953942155_0-2826.profraw
+[2m2026-08-25T01:39:29.212907Z[0m [32m INFO[0m [2mcargo_tarpaulin::statemachine::instrumented[0m[2m:[0m Merging coverage reports
+[2m2026-08-25T01:39:29.212937Z[0m [33m WARN[0m [2mcargo_tarpaulin::statemachine::instrumented[0m[2m:[0m profraw file has no records after merging. If this is unexpected it may be caused by a panic or signal used in a test that prevented the LLVM instrumentation runtime from serialising results
+[2m2026-08-25T01:39:29.213139Z[0m [32m INFO[0m [2mcargo_tarpaulin::report[0m[2m:[0m Coverage Results:
+[2m2026-08-25T01:39:29.213343Z[0m [32m INFO[0m [2mcargo_tarpaulin::report::html[0m[2m:[0m HTML report written to /home/runner/work/shelf-objects.rs/shelf-objects.rs/coverage/tarpaulin-report.html
+|| Tested/Total Lines:
+No coverable lines found
